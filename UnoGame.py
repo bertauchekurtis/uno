@@ -5,7 +5,6 @@
 
 from UnoDeck import UnoDeck
 from WildUnoCard import WildUnoCard
-from Hand import Hand
 
 class UnoGame():
 

@@ -31,10 +31,12 @@ def main():
             if(not player.skipNextTurn):
                 validMove = False
                 while(not validMove):
-                    # first, we need to check if there are any cards that the player CAN play
+                    # first, we need to check if there 
+                    # are any cards that the player CAN play
                     # if not, we need to draw cards for them
                     while(not game.handHasAValidMove(player)):
-                        print("You don't have any playable cards! Adding a card to your deck ;)")
+                        print("You don't have any playable cards!")
+                        print("Adding a card to your deck ;)")
                         game.giveCardToHand(player)
                     print("\nPlayer, it is your turn:")
                     print(game.getTopCardString())
@@ -48,7 +50,7 @@ def main():
                         try:
                             choice = int(choice)
                             intChoice = True
-                        except:
+                        except TypeError:
                             print("Please enter a whole number.")
                     # check to make sure the index is valid
                     validMove = player.validatePosition(int(choice) - 1)
@@ -57,7 +59,8 @@ def main():
                         print("Invalid index, please try again.")
                     # check if the card is a valid to play card
                     if(validMove):
-                        validMove = game.validateCardToPlay(player.peekCardFromHandByPosition(int(choice) - 1))
+                        validMove = game.validateCardToPlay(
+                            player.peekCardFromHandByPosition(int(choice) - 1))
                         if(not validMove):
                             print("Invalid move, please try again.")
                 

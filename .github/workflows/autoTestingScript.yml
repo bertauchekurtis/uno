@@ -32,7 +32,7 @@ jobs:
         run: |
           coverage run -m TestUnoCard
           coverage run -m TestWildUnoCard
-          coverage run -m TestDeck
+          coverage run -m TestUnoDeck
           coverage run -m TestHand
           coverage run -m TestUnoGame
           coverage run -m TestIntegrationTests

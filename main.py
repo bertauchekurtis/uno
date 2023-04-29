@@ -71,7 +71,8 @@ def main():
                     inputgood = False
                     color = None
                     while(not inputgood):
-                        color = input("Wild card! Choose your color (Red, Green, Blue, Yellow): ")
+                        color = input("Wild card! Choose your color \
+                                       (Red, Green, Blue, Yellow): ")
                         if color in colors:
                             inputgood = True
                         else:
@@ -84,12 +85,14 @@ def main():
                 player.skipNextTurn = False
 
             # now we do the computer's move
-            if(not computer.skipNextTurn and not game.thereIsWinner([player, computer])):
+            if(not computer.skipNextTurn and 
+               not game.thereIsWinner([player, computer])):
                 print("\nThe computer will now play.")
                 print("The computer has " + str(len(computer.cards)) + " cards.")
                 print(game.getTopCardString())
                 while(not game.handHasAValidMove(computer)):
-                        print("The compueter doesn't have any valid moves. Adding a card.")
+                        print("The compueter doesn't have any \
+                              valid moves. Adding a card.")
                         game.giveCardToHand(computer)
                 cardToPlay = None
                 for card in computer.cards:

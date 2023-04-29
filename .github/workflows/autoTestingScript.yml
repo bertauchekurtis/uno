@@ -28,13 +28,11 @@ jobs:
           ruff --format=github --select=E9,F63,F7,F82 --target-version=py37 .
           # default set of ruff rules with GitHub Annotations
           ruff --format=github --target-version=py37 .
-      - name: Install coverage
-        run: python -m pip install coverage
-      - name: Run Tests
+      - name: Run unittests
         run: |
-          coverage run -m TestUnoCard
-          coverage run -m TestWildUnoCard
-          coverage run -m TestUnoDeck
-          coverage run -m TestHand
-          coverage run -m TestUnoGame
-          coverage run -m TestIntegrationTests
+          coverage run -m TestUnoCard.py
+          coverage run -m TestWildUnoCard.py
+          coverage run -m TestUnoDeck.py
+          coverage run -m TestHand.py
+          coverage run -m TestUnoGame.py
+          coverage run -m TestIntegrationTests.py

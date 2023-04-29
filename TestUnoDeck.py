@@ -75,3 +75,6 @@ class TestUnoCard(unittest.TestCase):
         theReturn = self.UnoDeck.clearDeck()
         self.assertTrue(theReturn and self.UnoDeck.cards == [],
                         "Clear deck did not properly clear the deck.")
+        
+if __name__ == '__main__':
+    unittest.main()

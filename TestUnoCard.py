@@ -29,3 +29,6 @@ class TestUnoCard(unittest.TestCase):
         self.assertEqual(self.UnoCard.getCardString(),
                          "Red Seven",
                          "Card did not return correct string")
+
+if __name__ == '__main__':
+    unittest.main()

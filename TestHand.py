@@ -97,4 +97,5 @@ class TestHand(unittest.TestCase):
         self.assertFalse(self.hand.validatePosition(5),
                         "Position is not valid but function returned true")
 
-
+if __name__ == '__main__':
+    unittest.main()

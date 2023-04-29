@@ -23,3 +23,6 @@ class TestHand(unittest.TestCase):
     # integration tests since they involve other units of code
     # They can be found in the integration test file
     ######################
+
+if __name__ == '__main__':
+    unittest.main()

@@ -19,3 +19,6 @@ class TestWildUnoCard(unittest.TestCase):
         self.assertEqual(self.WildUnoCard.getCardString(),
                          "Wild Draw Four",
                          "Wild Card did not return correct string")
+        
+if __name__ == '__main__':
+    unittest.main()

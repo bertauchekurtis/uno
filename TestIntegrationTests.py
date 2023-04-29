@@ -132,3 +132,6 @@ class TestIntegrationTests(unittest.TestCase):
                         self.game.discardDeck.cards[0] == card and
                         len(self.player.cards) == 4,
                         "Wild draw four card did not get played correctly")
+
+if __name__ == '__main__':
+    unittest.main()

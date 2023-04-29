@@ -45,9 +45,19 @@ class UnoDeck:
             self.cards.remove(self.cards[0])
             return(card)
         return False
+    
+    def peekTopCard(self):
+        if not self.isEmpty():
+            card = self.cards[0]
+            return(card)
+        return False
         
     def isEmpty(self):
         if(len(self.cards) == 0):
             return True
         else:
             return False
+        
+    def clearDeck(self):
+        self.cards = []
+        return True

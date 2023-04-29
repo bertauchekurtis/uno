@@ -10,74 +10,80 @@ from Hand import Hand
 class UnoGame():
 
     def __init__(self):
-        self.deck = UnoDeck()
-        self.discard = UnoDeck()
-        self.playerHand = Hand("Player")
-        self.computerHand = Hand("Computer")
-        self.gameActive = False
+        self.drawDeck = UnoDeck()
+        self.discardDeck = UnoDeck()
+        self.currentColor = None
 
-    def setUpGame(self):
-        self.deck.fillDeck()
-        self.deck.shuffle()
-        self.gameActive = True
+    def setupNewGame(self):
+        self.drawDeck.clearDeck()
+        self.drawDeck.fillDeck()
+        self.drawDeck.shuffle()
+        self.discardDeck.clearDeck()
+        setup = False
+        card = self.drawDeck.drawTopCard()
+        while(isinstance(card, WildUnoCard)):
+            self.drawDeck.addCardToBottom(card)
+            card = self.drawDeck.drawTopCard()
+
+        self.discardDeck.addCardToTop(card)
+        self.currentColor = self.discardDeck.peekTopCard().getCardColor()
+
+    def doInitialDeal(self, hands):
+        # we give all of the players seven cards
         for i in range(0, 7):
-            card = self.deck.drawTopCard()
-            self.playerHand.giveCardToHand(card)
-            card = self.deck.drawTopCard()
-            self.computerHand.giveCardToHand(card)
-        self.discard.addCardToTop(self.deck.drawTopCard())
+            for hand in hands:
+                hand.giveCardToHand(self.drawDeck.drawTopCard())
 
-    # this checks a card against the top card (to be played on top of)
-    def validateMove(self, card):
-        if(isinstance(card, WildUnoCard)):
-           return True
-        if(self.deck.cards[0].name == card.name or self.deck.cards[0].color == card.color):
-            return True
-        return False
-    
-    # this gets the string to print of the top card
     def getTopCardString(self):
-        return "Top Card: " + self.discard.cards[0].getCardString()
+        string = "Card to play on top of:\n-"
+        string += self.discardDeck.peekTopCard().getCardString()
+        return string 
     
-    # adds a card to discard
-    def addCardToDiscard(self, card):
-        self.discard.addCardToTop(card)
-
-    # this returns TRUE if the player has a possible move, FALSE otherwise
-    def playerHasValidMove(self, card):
-        for card in self.playerHand.cards:
-            valid = self.validateMove(card)
-            if(valid):
+    def thereIsWinner(self, hands):
+        for hand in hands:
+            if len(hand.cards) == 0:
                 return True
         return False
-
-    # this returns TRUE if the computer has a possible move, FALSE otherwise
-    def computerHasValidMove(self, card):
-        for card in self.computerHand.cards:
-            valid = self.validateMove(card)
-            if(valid):
-                return True
-        return False
-
-    # this confirms that the move that the player has chosen is valid (based on index)
-    # if it is, returns TRUE
-    # otherwise, returns FALSE
-    def confirmValidPlayerMove(self, position):
-        # first, make sure index is valid
-        if(not self.playerHand.validatePosition(position)):
-            return False
-        # then make sure card is playable
-        tryCard = self.playerHand.peekCardFromHandByPosition(position)
-        if(not self.validateMove(tryCard)):
-            return False
-        return True
     
-    # this checks if someone has won the game
-    def thereIsWinner(self):
-        if len(self.playerHand.cards) == 0 or len(self.computerHand.cards) == 0:
+    def validateCardToPlay(self, card):
+        # or if it's a wild card
+        if(isinstance(card, WildUnoCard)):
+            return True
+        if(self.currentColor == card.color):
+            return True
+        if(self.discardDeck.peekTopCard().name == card.name):
             return True
         return False
+    
+    def handHasAValidMove(self, hand):
+        for card in hand.cards:
+            if self.validateCardToPlay(card):
+                return True
+        return False
 
+    def giveCardToHand(self, hand):
+        if self.drawDeck.isEmpty():
+            topCard = self.discardDeck.drawTopCard()
+            while(not self.discardDeck.isEmpty()):
+                self.drawDeck.addCardToTop(self.discardDeck.drawTopCard())
+                self.drawDeck.shuffle()
+            self.discardDeck.addCardToTop(topCard)
+        hand.giveCardToHand(self.drawDeck.drawTopCard())
 
+    def doMove(self, card, nextHand):
+        if(card.name == "Draw Two"):
+            self.giveCardToHand(nextHand)
+            self.giveCardToHand(nextHand)
+        elif(card.name == "Skip"):
+            nextHand.skipNextTurn = True
+        elif(card.name == "Reverse"):
+            nextHand.skipNextTurn = True
+        self.currentColor = card.color
+        self.discardDeck.addCardToTop(card)
 
-
+    def doWildMove(self, card, color, nextHand):
+        if(card.name == "Wild Draw Four"):
+            for i in range(0,4):
+                self.giveCardToHand(nextHand)
+        self.discardDeck.addCardToTop(card)
+        self.currentColor = color

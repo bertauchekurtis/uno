@@ -30,9 +30,6 @@ jobs:
           ruff --format=github --target-version=py37 .
       - name: Run unittests
         run: |
-          coverage run -m TestUnoCard.py
-          coverage run -m TestWildUnoCard.py
-          coverage run -m TestUnoDeck.py
-          coverage run -m TestHand.py
-          coverage run -m TestUnoGame.py
-          coverage run -m TestIntegrationTests.py
+          coverage run -m TestUnoCard
+          coverage run -m TestWildUnoCard
+          coverage run -m TestUnoDeck

@@ -19,12 +19,10 @@ class UnoGame():
         self.drawDeck.fillDeck()
         self.drawDeck.shuffle()
         self.discardDeck.clearDeck()
-        setup = False
         card = self.drawDeck.drawTopCard()
         while(isinstance(card, WildUnoCard)):
             self.drawDeck.addCardToBottom(card)
             card = self.drawDeck.drawTopCard()
-
         self.discardDeck.addCardToTop(card)
         self.currentColor = self.discardDeck.peekTopCard().getCardColor()
 

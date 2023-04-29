@@ -53,3 +53,25 @@ class TestUnoCard(unittest.TestCase):
         self.assertEqual(self.UnoDeck.drawTopCard(),
                          card,
                          "Draw top card did not work as it should")
+        
+    def test_drawTopCardNoCards(self):
+        self.assertFalse(self.UnoDeck.drawTopCard(),
+                         "Did not return false when there were no cards.")
+    
+    def test_peekTopCard(self):
+        card = UnoCard("Red", "Seven")
+        self.UnoDeck.fillDeck()
+        self.UnoDeck.addCardToTop(card)
+        self.assertEqual(card,
+                         self.UnoDeck.peekTopCard(),
+                         "Peek top card did not return the correct card.")
+        
+    def test_peekTopCardNoCards(self):
+        self.assertFalse(self.UnoDeck.peekTopCard(),
+                         "Peek top card did not return false with an empty deck.")
+        
+    def test_clearDeck(self):
+        self.UnoDeck.fillDeck()
+        theReturn = self.UnoDeck.clearDeck()
+        self.assertTrue(theReturn and self.UnoDeck.cards == [],
+                        "Clear deck did not properly clear the deck.")

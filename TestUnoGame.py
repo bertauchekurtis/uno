@@ -15,10 +15,11 @@ class TestHand(unittest.TestCase):
     def testConstructor(self):
         self.assertTrue(isinstance(self.game.drawDeck, UnoDeck) and
                         isinstance(self.game.discardDeck, UnoDeck) and
-                        self.game.currentColor == None,
+                        self.game.currentColor is None,
                         "Uno game not correctly constructed.")
         
     ##### IMPORTANT ######
-    # The rest of the functions for UnoGame.py are integration tests since they involve other units of code
+    # The rest of the functions for UnoGame.py are 
+    # integration tests since they involve other units of code
     # They can be found in the integration test file
     ######################

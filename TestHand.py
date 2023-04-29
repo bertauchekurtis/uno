@@ -14,7 +14,9 @@ class TestHand(unittest.TestCase):
         self.hand = Hand("Player")
 
     def test_construcotr(self):
-        self.assertTrue(len(self.hand.cards) == 0 and self.hand.name == "Player" and self.hand.skipNextTurn == False,
+        self.assertTrue(len(self.hand.cards) == 0 and 
+                        self.hand.name == "Player" and 
+                        self.hand.skipNextTurn is False,
                         "Did not construct hand properly")
         
     def test_giveCardToPlayer(self):

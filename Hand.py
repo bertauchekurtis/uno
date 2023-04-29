@@ -3,9 +3,6 @@
 # 4 26 2023
 # cs 333 final project
 
-from UnoCard import UnoCard
-from WildUnoCard import WildUnoCard
-
 class Hand:
 
     def __init__(self, name):

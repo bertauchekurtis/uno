@@ -29,7 +29,7 @@ class TestIntegrationTests(unittest.TestCase):
         self.assertTrue(len(self.player.cards) == 7 and
                         len(self.computer.cards) == 7 and
                         len(self.game.drawDeck.cards) == 81,
-                        "Initial deal did not deal the correct number of cards to players")
+                        "Initial deal did give correct number of cards")
         
     def test_getTopCardString(self):
         card = UnoCard("Red", "Seven")
@@ -105,7 +105,7 @@ class TestIntegrationTests(unittest.TestCase):
         card = UnoCard("Red", "Skip")
         self.game.setupNewGame()
         self.game.doMove(card, self.computer)
-        self.assertTrue(self.computer.skipNextTurn == True and
+        self.assertTrue(self.computer.skipNextTurn is True and
                         self.game.discardDeck.cards[0] == card,
                         "Skip card did not get played correctly")
 
@@ -113,7 +113,7 @@ class TestIntegrationTests(unittest.TestCase):
         card = UnoCard("Red", "Reverse")
         self.game.setupNewGame()
         self.game.doMove(card, self.computer)
-        self.assertTrue(self.computer.skipNextTurn == True and
+        self.assertTrue(self.computer.skipNextTurn is True and
                         self.game.discardDeck.cards[0] == card,
                         "Skip card did not get played correctly")
         

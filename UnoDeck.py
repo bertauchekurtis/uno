@@ -15,7 +15,9 @@ class UnoDeck:
     def fillDeck(self):
         # first, add the cards that there are duplicates for
         colors = ["Red", "Blue", "Green", "Yellow"]
-        numbers = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+        numbers = ["One", "Two", "Three", "Four", 
+                   "Five", "Six", "Seven", "Eight", 
+                   "Nine"]
         for i in range(0, 2):
             for color in colors:
                 for number in numbers:

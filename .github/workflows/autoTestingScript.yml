@@ -95,6 +95,11 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/uno:latest
   Deploy-Report:
+  permissions:
+  contents: read
+  pages: write
+  id-token: write
+    needs: test
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

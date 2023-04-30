@@ -39,7 +39,7 @@ jobs:
   Create-Report:
     runs-on: ubuntu-latest
     needs: test
-    -name: Run Report
+    - name: Run Report
       run: |
         coverage html
     - name: Archive code coverage html report

@@ -52,6 +52,7 @@ jobs:
           pip install coverage
       - name: Run Report
         run: |
+          coverage run -m unittest discover
           coverage html
       - name: Archive code coverage html report
         uses: actions/upload-artifact@v3

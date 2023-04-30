@@ -54,6 +54,15 @@ jobs:
           name: code-coverage-report
       - name: Test Download
         run: ls -R
+      - name: Move Files
+        run: |
+          mkdir coverageReport
+          mv *.html ./coverageReport
+          mv *.js ./coverageReport
+          mv *.png ./coverageReport
+          mv *.json ./coverageReport
+          mv *.css ./coverageReport
+          ls -R
   Push-to-Docker:
     runs-on: ubuntu-latest
     needs: test

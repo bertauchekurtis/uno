@@ -68,7 +68,7 @@ jobs:
         with:
           message: Auto Generated coverage report
           committer_name: GitHub Actions
-          add: coverageReport
+          add: coverageReport -f
   Push-to-Docker:
     runs-on: ubuntu-latest
     needs: test

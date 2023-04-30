@@ -63,6 +63,12 @@ jobs:
           mv *.json ./coverageReport
           mv *.css ./coverageReport
           ls -R
+      - name: Push to Repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Auto Generated coverage report
+          committer_name: GitHub Actions
+          add: coverageReport
   Push-to-Docker:
     runs-on: ubuntu-latest
     needs: test

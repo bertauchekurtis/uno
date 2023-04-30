@@ -51,7 +51,7 @@ jobs:
       - name: Download Coverage Report
         uses: actions/download-artifact@v3
         with:
-          name: htmlcov
+          name: code-coverage-report
       - name: Test Download
         run: ls -R
   Push-to-Docker:

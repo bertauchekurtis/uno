@@ -26,4 +26,7 @@ Run the docker image with the following command:
 ```
 docker run -ti uno
 ```
-
+Having issues with the docker image not being found locally? Try this one instead:
+```
+docker run -ti bertauchekurtis/uno
+```

@@ -50,11 +50,9 @@ class TestHand(unittest.TestCase):
         self.hand.giveCardToHand(card1)
         self.hand.giveCardToHand(card2)
         self.hand.giveCardToHand(card3)
-        card = self.hand.peekCardFromHandByPosition(1)
-        self.assertTrue(card == card2 and
-                        self.hand.cards[0] == card1 and
-                        self.hand.cards[1] == card2 and
-                        self.hand.cards[2] == card3,
+        self.assertTrue(self.hand.peekCardFromHandByPosition(1) == card2 and
+                        self.hand.peekCardFromHandByPosition(0) == card1 and
+                        self.hand.peekCardFromHandByPosition(2) == card3,
                         "Peek did not find the correct card.")
         
     def test_peekCardFromHandByPositionInvalidPosition(self):

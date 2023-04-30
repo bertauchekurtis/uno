@@ -36,3 +36,11 @@ jobs:
           coverage run -m TestHand
           coverage run -m TestUnoGame
           coverage run -m TestIntegrationTests
+      - name: Generage Coverage HTML Report
+        run: |
+          coverage html
+      - name: Archive code coverage html report
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: src/htmlcov

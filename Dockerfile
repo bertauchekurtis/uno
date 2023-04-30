@@ -1,6 +1,6 @@
 FROM python:3
 
-COPY . /app
+COPY UnoCard.py WildUnoCard.py UnoDeck.py Hand.py UnoGame.py main.py /app/
 
 WORKDIR /app
 

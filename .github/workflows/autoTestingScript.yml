@@ -1,5 +1,4 @@
-name: Python package
-
+name: Automated Testing
 on: [push]
 
 jobs:

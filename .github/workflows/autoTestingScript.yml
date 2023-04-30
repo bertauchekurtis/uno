@@ -96,12 +96,12 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/uno:latest
 
   Deploy-Report:
+    needs: Create-Report
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
       id-token: write
-    needs: Create-Report
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

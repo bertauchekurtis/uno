@@ -61,7 +61,7 @@ jobs:
         run: ls -R
       - name: Move Files
         run: |
-          mkdir coverageReport
+          mkdir -p coverageReport
           mv *.html ./coverageReport
           mv *.js ./coverageReport
           mv *.png ./coverageReport
@@ -78,7 +78,7 @@ jobs:
   Push-to-Docker:
     runs-on: ubuntu-latest
     needs: test
-    steps:
+    steps: Create-Report
       -
         name: Checkout
         uses: actions/checkout@v3
@@ -100,7 +100,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/uno:latest
   Deploy-Report:
-    needs: test
+    needs: 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

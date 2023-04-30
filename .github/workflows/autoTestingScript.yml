@@ -44,8 +44,8 @@ jobs:
           name: code-coverage-report
           path: htmlcov/
       - name: Push Report to Repo
-          uses: EndBug/add-and-commit@v9
-          with:
-            message: Generate coverage report in repo
-            commiter_name: GitHub Actions
-            add: htmlcov
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Generate coverage report in repo
+          commiter_name: GitHub Actions
+          add: htmlcov

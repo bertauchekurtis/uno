@@ -43,7 +43,7 @@ jobs:
         with:
           name: code-coverage-report
           path: htmlcov/
-  Create Report:
+  Create-Report:
     runs-on: ubuntu latest
     needs: test
     steps:
@@ -54,7 +54,7 @@ jobs:
           name: htmlcov
       - name: Test Download
         run: ls -R
-  Push to Docker:
+  Push-to-Docker:
     runs-on: ubuntu-latest
     needs: test
     steps:

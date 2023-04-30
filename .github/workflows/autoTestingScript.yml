@@ -35,16 +35,20 @@ jobs:
           coverage run -m TestHand
           coverage run -m TestUnoGame
           coverage run -m TestIntegrationTests
-      - name: Generage Coverage HTML Report
-        run: |
-          coverage html
-      - name: Archive code coverage html report
+
+  Create-Report:
+    runs-on: ubuntu-latest
+    needs: test
+    -name: Run Report
+      run: |
+        coverage html
+    - name: Archive code coverage html report
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
           path: htmlcov/
 
-  Create-Report:
+  Move-Report:
 
     runs-on: ubuntu-latest
     needs: test
@@ -96,7 +100,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/uno:latest
 
   Deploy-Report:
-    needs: Create-Report
+    needs: Move-Report
     runs-on: ubuntu-latest
     permissions:
       contents: read

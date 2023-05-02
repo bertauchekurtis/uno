@@ -71,8 +71,8 @@ def main():
                     inputgood = False
                     color = None
                     while(not inputgood):
-                        color = input("Wild card! Choose your color \
-                                       (Red, Green, Blue, Yellow): ")
+                        print("Wild card! Choose your color:")
+                        color = input("(Red, Green, Blue, Yellow): ")
                         if color in colors:
                             inputgood = True
                         else:

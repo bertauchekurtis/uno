@@ -11,7 +11,7 @@ from random import choice as rchoice
 def main():
     
     print("====> Welcome to Uno! <====\n")
-    print("You will play a game of Uno against your computer. Good luck!\n")
+    print("You will play a game of Uno against the computer. Good luck!\n")
 
 
     wantsToPlay = True

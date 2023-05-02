@@ -26,7 +26,12 @@ coverage run -m unittest discover
 coverage report
 ```
 6. This coverage report is stored in the .coverage file that is already contained in this repository, so it can be viewed without having to re-run the tests
+
+To make it easy to view the coverage report, I have included a screenshot of it here as well:
+![Coverage report](https://github.com/bertauchekurtis/uno/blob/main/coverageReport.png?raw=true)
+
 ***
+
 ## **Automated Deployment**
 
 This repository is setup to automatically deploy the application upon commit and successful testing. In more detail, the process looks like this:
